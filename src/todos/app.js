@@ -33,10 +33,11 @@ export const App = (elementId) => {
     //REFERENCIAS HTML se crea aquí porque si lo hago arriba no van a existir esas referencias debido a que no se ha ejecutado la funcionn anónima
 
     const newDescriptionInput= document.querySelector(ElementIDs.NewTodoInput);
+    const todoListUL= document.querySelector(ElementIDs.TodoList);
 
     //Listeners
     newDescriptionInput.addEventListener('keyup', (event)=>{
-        if (event.keyCode !== 13) return; 
+        if (event.key !== 'Enter') return; 
         if(event.target.value.trim().length===0) return;
 
         todoStore.addTodo(event.target.value); 
@@ -44,6 +45,11 @@ export const App = (elementId) => {
         event.target.value='';
     });
 
+    todoListUL.addEventListener('click', (event)=>{
+        const element= event.target.closest('[data-id]');
+        todoStore.toggleTodo(element.getAttribute('data-id'));
+        displayTodos();
+    })
 
 
 }
