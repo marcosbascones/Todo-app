@@ -16,7 +16,7 @@ export const App = (elementId) => {
 
     const displayTodos=()=>{
         const todos= todoStore.getTodos(todoStore.getCurrentFilter() );
-        renderTodos();
+        renderTodos(ElementIDs.TodoList, todos);
         console.log(todos);
 
     }
