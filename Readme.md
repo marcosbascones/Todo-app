@@ -1,4 +1,5 @@
 -Uso de paquete npm uuid para crear identificadores unicos 
 -Creacción de clases en js
 -CSS Y PLANTILLA HTML  predefinidas
--Se controla el acceso al state
+-Se controla el acceso al state ¿Cómo lo hago preguntar tal vez html?
+-Uso avanzado del Dom
