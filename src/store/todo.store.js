@@ -12,7 +12,8 @@ const state= {
     todos: [
         new Todo('Piedra del alma'),
         new Todo('Piedra filosofal'),
-        new Todo('Piedra del tiempo')
+        new Todo('Piedra del tiempo'),
+        new Todo('Piedra del conocimiento')
     ],
     filter: Filters.All
 }
@@ -55,7 +56,12 @@ const addTodo = (description)=> {
 }
 
 const toggleTodo= (todoId)=>{
-        throw new Error('Not implemented');
+        state.todos= state.todos.map(todo=>{
+            if(todo.id===todoId){
+                todo.done= !todo.done;
+            }
+             return todo;
+        });
 
 }
 
