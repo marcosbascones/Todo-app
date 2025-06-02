@@ -44,7 +44,7 @@ https://app-todo-portfolio.netlify.app/
 
 ## 🎨 Estilos y plantillas
 
-- Estilo visual definido con **CSS** y estructura **HTML** a partir de recursos externos (créditos en el protpio HTML).
+- Estilo visual definido con **CSS** y estructura **HTML** a partir de recursos externos (créditos en el propio HTML).
 - Separación clara entre lógica y presentación.
 
 ---
