@@ -51,16 +51,6 @@ Este proyecto es una aplicación interactiva para gestionar tareas (Todo List) d
 3. Usa los **filtros** para mostrar tareas según su estado.
 4. El botón **Eliminar Completadas** borra solo las finalizadas.
 
----
 
-## Cómo usar este proyecto localmente sin instalar nada
-
-1. Descarga o clona este repositorio.
-
-2. Abre la carpeta `dist`.
-
-3. Abre el archivo `index.html` con cualquier navegador moderno (Chrome, Firefox, Edge, Safari...).
-
-Así podrás usar la aplicación directamente, sin necesidad de instalar dependencias ni servidores.
 
 
