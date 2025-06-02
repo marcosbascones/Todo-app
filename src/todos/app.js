@@ -29,16 +29,22 @@ export const App = (elementId) => {
         updatePendingCount();
     }
 
+    //Se encarga de la actualización del contador
     const updatePendingCount= () => {
         //Consultar use-cases
         renderPending(ElementIDs.PendingCountLabel);
     }
 
     //Cuando la función App() se llama esto se invoca de manera automática
+    //
     (()=>{
+        //Creamos un div
         const app= document.createElement('div');
+        //En ese div insertamos el HTML que hemos importado
         app.innerHTML= html;
+        //Insertamos el HTML en el elemento "elementId" #app que hemos recibido en main.js 
         document.querySelector(elementId).append(app);
+        //Se despliegan los todos
         displayTodos();
     })();
 
@@ -49,7 +55,9 @@ export const App = (elementId) => {
     const clearCompletedButton= document.querySelector(ElementIDs.ClearCompleted);
     const filtersLIs = document.querySelectorAll(ElementIDs.TodoFilters);
 
-    //Listeners
+    //Listeners Eventos
+
+    //Añadir nueva tarea
     newDescriptionInput.addEventListener('keyup', (event)=>{
         if (event.key !== 'Enter') return; 
         if(event.target.value.trim().length===0) return;
@@ -59,12 +67,14 @@ export const App = (elementId) => {
         event.target.value='';
     });
 
+    //Cambio pendientes/realizadas
     todoListUL.addEventListener('click', (event)=>{
         const element= event.target.closest('[data-id]');
         todoStore.toggleTodo(element.getAttribute('data-id'));
         displayTodos();
     })
 
+    //Eliminación 
     todoListUL.addEventListener('click', (event)=>{
         const isDestroyElement= event.target.className==='destroy';
         const element= event.target.closest('[data-id]');
@@ -77,6 +87,7 @@ export const App = (elementId) => {
        
     })
 
+    //Eliminación de tareas completas
     clearCompletedButton.addEventListener('click', (event)=>{
         const isDestroyElement= event.target.className==='clear-completed';
 
@@ -86,6 +97,7 @@ export const App = (elementId) => {
         displayTodos(); 
     })
 
+    //Lógica del botón inferior
     filtersLIs.forEach(element=>{
         element.addEventListener('click', (element)=>{
             filtersLIs.forEach(el => el.classList.remove('selected'));
