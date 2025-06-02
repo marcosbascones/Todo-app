@@ -1,12 +1,14 @@
 import {Todo} from '../todos/models/todo.model'
 
-
+//Filtros que según selección muestran unos todos específicos
 
 export const Filters = {
     All: 'all',
     Completed: 'Completed',
     Pending: 'Pending'
 }
+
+//Todos iniciales de prueba
 
 const state= {
     todos: [
@@ -18,26 +20,37 @@ const state= {
     filter: Filters.All
 }
 
+
+//
+
 const initStore = () =>{
     loadStore();
     console.log('InitStore');
     console.log(state);
 }
 
+
 const loadStore = ()=> {
+    //Comprobación de si existe algo en State dentro del localStore. Si no lo hay no hace nada
     if(!localStorage.getItem('state')) return;
 
+    //Desestructuración que obtiene todos y filter después de parsear JSON de 'state' que tenemos en localStore
     const {todos=[], filter= Filters.All}= JSON.parse(localStorage.getItem('state'));
+
+    //Le asigna estos valores extraidos a nuestro state local
     state.todos= todos;
     state.filter= filter;
 }
 
+
+
 const saveStateToLocalStorage= () =>{
-    //console.log(JSON.stringify(state));
+    //Actualiza el state del localStorage con nuestro nuevo state local motivo por el que se llama a esta función en todas las funciones en las que se genera cambios en el state
     localStorage.setItem('state', JSON.stringify(state));
 }
 
 
+//Filtros que se usan para decidir que mostrar
 const getTodos= (filter= Filters.All)=>{
     switch(filter){
         case Filters.All:
@@ -57,6 +70,7 @@ const getTodos= (filter= Filters.All)=>{
 /**
  * 
  * @param {String} description 
+ * Añadimos con un push un nuevo todo a nuestro state
  */
 const addTodo = (description)=> {
 
@@ -66,6 +80,9 @@ const addTodo = (description)=> {
         
 
 }
+
+// Cambia el estado "done" de un todo según su id
+// Recorre el array con map, invierte el valor de done si coincide el id
 
 const toggleTodo= (todoId)=>{
         state.todos= state.todos.map(todo=>{
@@ -79,6 +96,9 @@ const toggleTodo= (todoId)=>{
 
 }
 
+
+//Deja en el array solo los todos cuyo id es distinto del que se quiere eliminar
+//Filter crear un nuevo array,  si el todoId es diferente devuelve true y el todo se queda de lo contrario será filtrado
 const deleteTodo= (todoId)=>{
         state.todos=state.todos.filter(todo=> todo.id !== todoId)
         saveStateToLocalStorage();
@@ -86,6 +106,7 @@ const deleteTodo= (todoId)=>{
 
 }
 
+//Se quedan aquellos todos cuyo valor en done sea falso
 const deleteCompleted= (todoId)=>{
         state.todos=state.todos.filter(todo=> !todo.done)
         saveStateToLocalStorage();
@@ -106,6 +127,8 @@ const getCurrentFilter= ()=>{
         return state.filter;
 
 }
+
+//Exportamos los métodos para que puedan usarse en otros archivos
 
 export default {
     getTodos,
