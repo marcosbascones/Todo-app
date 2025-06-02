@@ -4,9 +4,11 @@
 
 Este proyecto es una aplicación interactiva para gestionar tareas (Todo List) desarrollada con **JavaScript vanilla** y construida usando **Vite** . Permite crear, marcar como completadas, filtrar y eliminar tareas.
 
-Aplicación desplegada en Netlify:
+Aplicación desplegada en Netlify y GitHub pages:
 
 https://app-todo-portfolio.netlify.app/
+
+https://marcosbascones.github.io/Todo-app/
 
 ---
 
