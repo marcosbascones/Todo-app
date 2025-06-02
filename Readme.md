@@ -2,7 +2,7 @@
 
 # 📝 Todo App - Lista de tareas en JavaScript
 
-Este proyecto es una aplicación interactiva para gestionar tareas (Todo List) desarrollada con **JavaScript vanilla**. Permite crear, marcar como completadas, filtrar y eliminar tareas.
+Este proyecto es una aplicación interactiva para gestionar tareas (Todo List) desarrollada con **JavaScript vanilla** y construida usando **Vite** . Permite crear, marcar como completadas, filtrar y eliminar tareas.
 ---
 
 ## 🔁 Lógica y estructura del proyecto
@@ -50,4 +50,17 @@ Este proyecto es una aplicación interactiva para gestionar tareas (Todo List) d
 2. Haz clic en una tarea para marcarla como **completada**.
 3. Usa los **filtros** para mostrar tareas según su estado.
 4. El botón **Eliminar Completadas** borra solo las finalizadas.
+
+---
+
+## Cómo usar este proyecto localmente sin instalar nada
+
+1. Descarga o clona este repositorio.
+
+2. Abre la carpeta `dist`.
+
+3. Abre el archivo `index.html` con cualquier navegador moderno (Chrome, Firefox, Edge, Safari...).
+
+Así podrás usar la aplicación directamente, sin necesidad de instalar dependencias ni servidores.
+
 
