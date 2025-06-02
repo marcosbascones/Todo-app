@@ -1,8 +1,9 @@
 import todoStore, { Filters } from '../store/todo.store';
-import html from './app.html?raw';
+import html from './app.html?raw'; // El ?raw indica a Vite que quiero exportar el texto plano
 import { renderPending, renderTodos } from './use-cases';
 
 
+//Ids que me permiten llamar a clases o id en el html
 const ElementIDs={
     ClearCompleted: '.clear-completed',
     TodoList: '.todo-list',
@@ -15,21 +16,25 @@ const ElementIDs={
 /**
  * 
  * @param {String} elementId 
+ * 
  */
 export const App = (elementId) => {
 
+
     const displayTodos=()=>{
+        //Toma los todos que tienen un filtro determinado y los guardamos en la const todos
         const todos= todoStore.getTodos(todoStore.getCurrentFilter() );
+        //Llamados renderTodos (ver explicación en use-cases) y updatePendingCount 
         renderTodos(ElementIDs.TodoList, todos);
         updatePendingCount();
-
     }
 
     const updatePendingCount= () => {
+        //Consultar use-cases
         renderPending(ElementIDs.PendingCountLabel);
     }
 
-    //Cuando la función App() se llama
+    //Cuando la función App() se llama esto se invoca de manera automática
     (()=>{
         const app= document.createElement('div');
         app.innerHTML= html;
