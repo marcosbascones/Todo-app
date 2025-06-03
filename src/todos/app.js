@@ -24,14 +24,14 @@ export const App = (elementId) => {
     const displayTodos=()=>{
         //Toma los todos que tienen un filtro determinado y los guardamos en la const todos
         const todos= todoStore.getTodos(todoStore.getCurrentFilter() );
-        //Llamados renderTodos (ver explicación en use-cases) y updatePendingCount 
+        //Llamados renderTodos (ElementIDs.TodoList es la UL en el HTML que contiene la clase .todo-lust) (ver explicación en use-cases) y updatePendingCount 
         renderTodos(ElementIDs.TodoList, todos);
         updatePendingCount();
     }
 
     //Se encarga de la actualización del contador
     const updatePendingCount= () => {
-        //Consultar use-cases
+        //Consultar use-cases  se llama al elemento con la id que tiene el contador
         renderPending(ElementIDs.PendingCountLabel);
     }
 
