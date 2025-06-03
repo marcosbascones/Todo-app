@@ -53,34 +53,41 @@ export const App = (elementId) => {
     const newDescriptionInput= document.querySelector(ElementIDs.NewTodoInput);
     const todoListUL= document.querySelector(ElementIDs.TodoList);
     const clearCompletedButton= document.querySelector(ElementIDs.ClearCompleted);
+
+    //Selecciona todos los elemmentos con la clase .filtro que es la que tienen los botones inferiores de filtrado 
     const filtersLIs = document.querySelectorAll(ElementIDs.TodoFilters);
 
     //Listeners Eventos
 
     //Añadir nueva tarea
     newDescriptionInput.addEventListener('keyup', (event)=>{
+        //Se especifica que solo se ejecute en caso de que se pulse enter y exista algun valor en el input
         if (event.key !== 'Enter') return; 
         if(event.target.value.trim().length===0) return;
 
         todoStore.addTodo(event.target.value); 
         displayTodos();
+        //Reinicia el valor del input a vacio
         event.target.value='';
     });
 
     //Cambio pendientes/realizadas
     todoListUL.addEventListener('click', (event)=>{
+        //Se captura el elemento más cercano con el atributo data-id
         const element= event.target.closest('[data-id]');
+        //Obtiene el valor del atributo data-id del elemento HTML y aplica el toggle
         todoStore.toggleTodo(element.getAttribute('data-id'));
         displayTodos();
     })
 
     //Eliminación 
     todoListUL.addEventListener('click', (event)=>{
+        //Establece un booleano para verificar si existe la clase destroy en el objeto seleccionado
         const isDestroyElement= event.target.className==='destroy';
         const element= event.target.closest('[data-id]');
 
         if(!isDestroyElement) return;
-        
+        //Si existe el destroy aplica el delete
         todoStore.deleteTodo(element.getAttribute('data-id'));
         displayTodos();
 
@@ -89,10 +96,11 @@ export const App = (elementId) => {
 
     //Eliminación de tareas completas
     clearCompletedButton.addEventListener('click', (event)=>{
+        //Busca que tenga la clase clear completed en el botón que se va a pulsar
         const isDestroyElement= event.target.className==='clear-completed';
 
         if(!isDestroyElement) return;
-        
+        //*si la tiene aplica el deleteCompleted
         todoStore.deleteCompleted();
         displayTodos(); 
     })
@@ -100,8 +108,11 @@ export const App = (elementId) => {
     //Lógica del botón inferior
     filtersLIs.forEach(element=>{
         element.addEventListener('click', (element)=>{
+            //Se pide que se elimine del class selected
             filtersLIs.forEach(el => el.classList.remove('selected'));
+            //Añadir en el elemento seleccionado la clase selected
             element.target.classList.add('selected');
+            //Según  el elemento seleccionado se aplica un filtro u otro para mostrar los elementos que estén en ese estado.
             switch(element.target.text){
 
                 case 'Todos':
